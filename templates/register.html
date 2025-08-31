@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <!-- Link Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add Google Fonts for a more attractive font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("{{url_for('static', filename='pic3.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: 'Poppins', sans-serif; /* Change font to Poppins */
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 30px; /* Increased padding for better spacing */
+      backdrop-filter: blur(10px);
+      max-width: 400px; /* Limit the width of the container for better readability */
+      text-align: center;
+    }
+    .container h2 {
+      font-weight: bold;
+      color: white;
+      margin-bottom: 20px; /* Add space below the heading */
+    }
+    .container label {
+      color: white;
+      font-weight: bold; /* Make labels bold for better visibility */
+    }
+    .form-control {
+      border-radius: 20px; /* Round the corners of form inputs */
+    }
+    .btn-primary {
+      background-color: #007bff; /* Change primary button color */
+      border-color: #007bff; /* Change primary button border color */
+      border-radius: 20px; /* Round the corners of buttons */
+    }
+    .btn-primary:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+      border-color: #0056b3; /* Darker border color on hover */
+    }
+    .text-danger {
+      color: #ff0000; /* Change text color for error messages */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm" action="#" method="POST">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+
+  <!-- Add Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Get form values
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Save user data to local storage (simulate registration)
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('username', username);
+      localStorage.setItem('password', password);
+
+      // Redirect to login page
+      window.location.href = "{{ url_for('login') }}";
+    });
+  </script>
+</body>
+</html>

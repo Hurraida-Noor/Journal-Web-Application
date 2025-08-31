@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal - Week 1 to Week 4</title>
+  <style>
+    body {
+      background-image: url("{{url_for('static', filename='pic5.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .week-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px; /* Add gap between week boxes */
+      margin-bottom: 30px;
+    }
+    .week {
+      flex: 1 1 0;
+      padding: 20px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 0; /* Remove default margin */
+    }
+    .journal-input {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      resize: none; /* Prevent resizing */
+      box-sizing: border-box; /* Keep textarea inside week box */
+    }
+    .btn-save {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .btn-save:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="width: 80%;">
+    <h1>Journal - Week 1 to Week 4</h1>
+    <div class="week-container">
+      <div class="week">
+        <h2>Week 1</h2>
+        <textarea class="journal-input" id="week1" placeholder="Write your journal for Week 1"></textarea>
+      </div>
+      <div class="week">
+        <h2>Week 2</h2>
+        <textarea class="journal-input" id="week2" placeholder="Write your journal for Week 2"></textarea>
+      </div>
+      <div class="week">
+        <h2>Week 3</h2>
+        <textarea class="journal-input" id="week3" placeholder="Write your journal for Week 3"></textarea>
+      </div>
+      <div class="week">
+        <h2>Week 4</h2>
+        <textarea class="journal-input" id="week4" placeholder="Write your journal for Week 4"></textarea>
+      </div>
+    </div>
+    <button class="btn-save" onclick="saveJournals()">Save</button>
+  </div>
+
+  <script>
+    function saveJournals() {
+      // Get journal entries
+      var week1 = document.getElementById('week1').value;
+      var week2 = document.getElementById('week2').value;
+      var week3 = document.getElementById('week3').value;
+      var week4 = document.getElementById('week4').value;
+
+      // Save journal entries to local storage
+      localStorage.setItem('week1', week1);
+      localStorage.setItem('week2', week2);
+      localStorage.setItem('week3', week3);
+      localStorage.setItem('week4', week4);
+
+      // Redirect to profile.html
+      window.location.href = "{{ url_for('profile') }}";
+    }
+  </script>
+</body>
+</html>

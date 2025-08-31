@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal App</title>
+  <style>
+    body {
+      background-image: url("{{url_for('static', filename='pic2.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .text-box {
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .text-box h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .btn {
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      border-radius: 30px;
+      padding: 10px 30px;
+      background-color: #007bff; /* Blue color for login button */
+      color: white; /* White text color */
+      text-decoration: none; /* Remove underline */
+      display: inline-block; /* Make it inline block to apply padding */
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="text-box">
+    <h1>Journal App</h1>
+    <!-- Add an ID to the login button for JavaScript handling -->
+    <a href="#" id="login-btn" class="btn">Login</a>
+    <!-- Add an ID to the register button for JavaScript handling -->
+    <a href="#" id="register-btn" class="btn" style="margin-left: 10px;">Register</a>
+  </div>
+
+  <!-- JavaScript to handle login button click -->
+  <script>
+  // Find the login button element
+  const loginBtn = document.getElementById('login-btn');
+  // Add a click event listener to the login button
+  loginBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    // Redirect to the login page using Flask route
+    window.location.href = "{{ url_for('login') }}";
+  });
+
+  // Find the register button element
+  const registerBtn = document.getElementById('register-btn');
+  // Add a click event listener to the register button
+  registerBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    // Redirect to the register page using Flask route
+    window.location.href = "{{ url_for('register') }}";
+  });
+  </script>
+</body>
+</html>

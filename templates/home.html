@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Write a Journal?</title>
+  <style>
+    body {
+      background-image: url("{{url_for('static', filename='pic4.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .question {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .reasons {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+    .reasons li {
+      margin-bottom: 10px;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: center;
+    }
+    .btn {
+      margin: 0 10px;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .btn.yes {
+      background-color: #007bff;
+      color: white;
+    }
+    .btn.no {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Why Write a Journal?</h1>
+    <div class="question">Unleash your inner glitter<br>Snuggle up with your thoughts<br>Plant happy seeds<br>Collect memories like seashells<br>Give your brain a rainbow sprinkle<br>Do you want to start your Journey?<br></div>
+    <div class="btn-container">
+      <button class="btn yes" onclick="startJournal()">Yes</button>
+      <button class="btn no" onclick="noThanks()">No</button>
+    </div>
+  </div>
+
+  <script>
+    function startJournal() {
+      window.location.href = "{{ url_for('journal') }}";
+    }
+
+    function noThanks() {
+      alert('Ok, I will wait for you.');
+    }
+  </script>
+</body>
+</html>

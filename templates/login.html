@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Goal-Setting App</title>
+  <!-- Link Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add Google Fonts for a more attractive font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("{{url_for('static', filename='pic1.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      font-family: 'Poppins', sans-serif; /* Change font to Poppins */
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 30px; /* Increased padding for better spacing */
+      backdrop-filter: blur(10px);
+      max-width: 400px; /* Limit the width of the container for better readability */
+      text-align: center;
+    }
+    .container h2 {
+      font-weight: bold;
+      color: white;
+      margin-bottom: 20px; /* Add space below the heading */
+    }
+    .container label {
+      color: white;
+      font-weight: bold; /* Make labels bold for better visibility */
+    }
+    .form-control {
+      border-radius: 20px; /* Round the corners of form inputs */
+    }
+    .btn-primary {
+      background-color: #007bff; /* Change primary button color */
+      border-color: #007bff; /* Change primary button border color */
+      border-radius: 20px; /* Round the corners of buttons */
+    }
+    .btn-primary:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+      border-color: #0056b3; /* Darker border color on hover */
+    }
+    .text-danger {
+      color: #ff0000; /* Change text color for error messages */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" action="#" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+    <div id="loginError" class="text-danger mt-3" style="display: none;">Invalid username or password.</div>
+  </div>
+
+  <!-- Add Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Get form values
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Retrieve user data from local storage
+      var storedUsername = localStorage.getItem('username');
+      var storedPassword = localStorage.getItem('password');
+
+      // Check if entered username and password match stored values
+      if (username === storedUsername && password === storedPassword) {
+        // Redirect to home page
+        window.location.href = "{{ url_for('home') }}";
+      } else {
+        // Show error message
+        document.getElementById('loginError').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
